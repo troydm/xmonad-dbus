@@ -9,6 +9,7 @@ It can be used to easily display XMonad status in [polybar](https://github.com/j
 
 ## Running
 
+```bash
     # start xmonad-dbus, you can optionally specify a path that would be used when receiveing messages, 
     # otherwise all xmonad-dbus related messages will be received)
     stack exec xmonad-dbus -- [path]
@@ -16,10 +17,12 @@ It can be used to easily display XMonad status in [polybar](https://github.com/j
     stack exec xmonad-dbus -- send string
     # and if you want to send messages only to particular path you can use sendToPath 
     stack exec xmonad-dbus -- sendToPath path string
+```
 
 ## Configuring XMonad
 To send status information from XMonad you need to add xmonad-dbus as dependency either via stack or manually when building your xmonad.hs
 
+```haskell
     import XMonad
     import XMonad.Hooks.DynamicLog
     import qualified XMonad.DBus as D
@@ -36,6 +39,7 @@ To send status information from XMonad you need to add xmonad-dbus as dependency
         D.requestAccess dbus
         -- start xmonad
         xmonad $ def { logHook = dynamicLogWithPP (myLogHook dbus) }
+```
 
 ## Configuring polybar
 To receive status you need to add custom/script module to your polybar config
