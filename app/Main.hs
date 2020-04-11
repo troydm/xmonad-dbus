@@ -15,8 +15,6 @@ printer m = do r <- takeMVar m
 
 work :: DC.Client -> [String] -> IO ()
 
-work c [] = return ()
-
 work c ("send":xs) = do
         requestAccess c
         send c $ intercalate " " xs
