@@ -6,28 +6,33 @@ import Data.List (intercalate)
 import System.IO (hFlush,stdout)
 import System.Environment (getArgs)
 
+import qualified DBus.Client as DC
+
 printer m = do r <- takeMVar m
                mapM_ putStrLn r
                hFlush stdout
                printer m
 
+work :: DC.Client -> [String] -> IO ()
+
+work c ("send":xs) = do
+        requestAccess c
+        send c $ intercalate " " xs
+
+work c ("sendToPath":x:xs) = do
+        requestAccess c
+        sendToPath c x $ intercalate " " xs
+
+work c args = do
+        m <- newEmptyMVar
+        case args of
+            (path:_) -> subscribeToPath c path
+            _ -> subscribe c
+            $ \s -> putMVar m (bodyToString s)
+        printer m
+
 main :: IO ()
 main = do
-        m <- newEmptyMVar
         c <- connect
         args <- getArgs
-        if args /= [] && head args == "send" then
-            do
-                requestAccess c
-                send c $ intercalate " " (tail args)
-        else if args /= [] && head args == "sendToPath" then
-            do
-                requestAccess c
-                sendToPath c (head $ tail args) $ intercalate " " (tail (tail args))
-        else
-            do
-                case args of
-                    (path:_) -> subscribeToPath c path
-                    _ -> subscribe c
-                    $ \s -> putMVar m (bodyToString s)
-                printer m
+        work c args
