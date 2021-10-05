@@ -4,7 +4,6 @@ module XMonad.DBus (connect,subscribe,subscribeToPath,bodyToString,requestAccess
 import Data.Maybe (mapMaybe)
 import qualified DBus as D
 import qualified DBus.Client as DC
-import qualified Codec.Binary.UTF8.String as UTF8
 
 busName = "org.XMonad.DBus"
 interface = "org.XMonad.DBus"
@@ -41,10 +40,10 @@ bodyToString s = mapMaybe D.fromVariant (D.signalBody s)
 
 send :: DC.Client -> String -> IO ()
 send c s = DC.emit c $ (D.signal pathPrefixObjectPath interface member) {
-    D.signalBody = [D.toVariant $ UTF8.decodeString s]
+    D.signalBody = [D.toVariant s]
     }
 
 sendToPath :: DC.Client -> String -> String -> IO ()
 sendToPath c p s = DC.emit c $ (D.signal (D.objectPath_ $ pathPrefix++"/"++p) interface member) {
-    D.signalBody = [D.toVariant $ UTF8.decodeString s]
+    D.signalBody = [D.toVariant s]
     }

@@ -1,5 +1,5 @@
 name:                xmonad-dbus
-version:             0.1.0.0
+version:             0.1.0.1
 github:              "troydm/xmonad-dbus"
 license:             BSD3
 author:              "Dmitry Geurkov"
@@ -21,7 +21,6 @@ description:         Please see the README on Github at <https://github.com/gith
 dependencies:
 - base >= 4.7 && < 5
 - dbus >= 0.10
-- utf8-string >= 1.0
 
 library:
   source-dirs: src
