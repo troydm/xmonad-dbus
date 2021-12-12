@@ -26,9 +26,10 @@ To send status information from XMonad you need to add xmonad-dbus as dependency
     import XMonad
     import XMonad.Hooks.DynamicLog
     import qualified XMonad.DBus as D
+    import qualified DBus.Client as DC
 
     -- Override the PP values as you would like (see XMonad.Hooks.DynamicLog documentation)
-    myLogHook :: D.Client -> PP
+    myLogHook :: DC.Client -> PP
     myLogHook dbus = def { ppOutput = D.send dbus }
 
     main :: IO ()
