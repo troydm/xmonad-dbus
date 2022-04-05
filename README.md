@@ -3,9 +3,21 @@ xmonad-dbus is DBus monitoring solution inspired by [xmonad-log](https://github.
 It allows you to easily send your status via DBus using XMonad's DynamicLog to any application that can execute custom scripts.
 It can be used to easily display XMonad status in [polybar](https://github.com/jaagr/polybar)
 
-## Building
+## Installation
 
+### With Stack
+
+```bash
     stack build
+```
+
+### With AUR
+
+Use your favourite [AUR helper](https://wiki.archlinux.org/title/AUR_helpers) to install on ArchLinux-based distribution:
+
+```bash
+    pikaur -S xmonad-dbus-git
+```
 
 ## Running
 
