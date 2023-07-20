@@ -7,13 +7,13 @@ cabal-version: 1.12
 -- hash: e09852654ab4face57c2b914858976e2a3f163d7aafec5df933a60de1b8baa90
 
 name:           xmonad-dbus
-version:        0.1.0.1
+version:        0.1.0.2
 description:    Please see the README on Github at <https://github.com/githubuser/xmonad-dbus#readme>
 homepage:       https://github.com/troydm/xmonad-dbus#readme
 bug-reports:    https://github.com/troydm/xmonad-dbus/issues
 author:         Dmitry Geurkov
 maintainer:     d.geurkov@gmail.com
-copyright:      2018 Dmitry Geurkov
+copyright:      2018-2023 Dmitry Geurkov
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple

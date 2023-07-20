@@ -1,10 +1,10 @@
 name:                xmonad-dbus
-version:             0.1.0.1
+version:             0.1.0.2
 github:              "troydm/xmonad-dbus"
 license:             BSD3
 author:              "Dmitry Geurkov"
 maintainer:          "d.geurkov@gmail.com"
-copyright:           "2018 Dmitry Geurkov"
+copyright:           "2018-2023 Dmitry Geurkov"
 
 extra-source-files:
 - README.md
